@@ -24,6 +24,7 @@ won't be added to the attribute.
     $obj->public_url = 'http://example.com';
     
 *template file*
+
     {attr target=$obj class="active active:this-is-active status crap" href="public_url"}
     > 'class="is-active this-is-active pending" href="http://example.com"'
 
