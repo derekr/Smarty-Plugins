@@ -39,11 +39,11 @@ There are a few options you can pass in to customize the output of the generated
     {attr target=$obj class="active" enclose="'"}
     > class='is-active'
 
-#### newline
+#### delimiter
 
-*default:* false
+*default:* " " (single space)
 
-    {attr target=$obj class="active" href="public_url" newline=true}
+    {attr target=$obj class="active" href="public_url" delimiter="\n"}
     > class="is-active"\nhref="http://example.com"
 
 #### sort
