@@ -37,38 +37,38 @@ function smarty_function_attr($params)
   unset($params['sort']);
   
   foreach ($params as $attr => $val) {
-  	if ($attr == 'class') {
-  	  $class_str = '';
-  	  $classes = explode(' ', $val);
-  	  
-  	  foreach ($classes as $class) {
-    	  $parts = explode(':', $class);
-    	  $prop = $parts[0];
+    if ($attr == 'class') {
+      $class_str = '';
+      $classes = explode(' ', $val);
+      
+      foreach ($classes as $class) {
+        $parts = explode(':', $class);
+        $prop = $parts[0];
         
         if (!$prop)
           continue;
         
-    	  $prop_val = $target->$prop;
+        $prop_val = $target->$prop;
         
         if (!$prop_val) {
           $class_str .= $prop;
           continue;
         }
         
-    	  if (count($parts) > 1) {
-      	  $class_str .= is_bool($prop_val) && $prop_val == true ? $parts[1] : $prop_val;
-    	  } else {
-      	  $class_str .= is_bool($prop_val) && $prop_val == true ? 'is-' . $prop : $prop_val;
-    	  }
-  	  }
-  	  
-  	  $val = $class_str;
-  	} else {
-    	$val = property_exists($target, $val) ? $target->$val : $val;
-  	}
+        if (count($parts) > 1) {
+          $class_str .= is_bool($prop_val) && $prop_val == true ? $parts[1] : $prop_val;
+        } else {
+          $class_str .= is_bool($prop_val) && $prop_val == true ? 'is-' . $prop : $prop_val;
+        }
+      }
+      
+      $val = $class_str;
+    } else {
+      $val = property_exists($target, $val) ? $target->$val : $val;
+    }
     
-  	if ($val)
-    	$attributes[$attr] = $val;
+    if ($val)
+      $attributes[$attr] = $val;
   }
   
   $attr_str = '';
@@ -77,7 +77,7 @@ function smarty_function_attr($params)
     ksort($attributes);
     
   foreach ($attributes as $attr => $val) {
-  	$attr_str .= "${attr}=${en}${val}${en}${newline}";
+    $attr_str .= "${attr}=${en}${val}${en}${newline}";
   }
   
   return rtrim(rtrim($attr_str, "\n"));
