@@ -30,8 +30,8 @@ function smarty_function_attr($params)
   unset($params['enclose']);
   $en = $enclose;
   
-  $newline = array_key_exists('newline', $params) && $params['newline'] == true ? "\n" : ' ';
-  unset($params['newline']);
+  $delimiter = array_key_exists('delimiter', $params) ? $params['delimiter'] : ' ';
+  unset($params['delimiter']);
   
   $sort = array_key_exists('sort', $params) ? $params['sort'] : false;
   unset($params['sort']);
@@ -77,7 +77,7 @@ function smarty_function_attr($params)
     ksort($attributes);
     
   foreach ($attributes as $attr => $val) {
-    $attr_str .= "${attr}=${en}${val}${en}${newline}";
+    $attr_str .= "${attr}=${en}${val}${en}${delimiter}";
   }
   
   return rtrim(rtrim($attr_str, "\n"));
