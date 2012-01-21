@@ -18,45 +18,36 @@ for when the bool is true `some_bool:this-was-true => this-was-true`. If the boo
 won't be added to the attribute.
 
     # Sample object
-    
     $obj->active     = true;
     $obj->title      = 'Whaddup';
     $obj->status     = 'pending';
     $obj->public_url = 'http://example.com';
-
-<table>
-	<tr>
-	  <th>`{attr target=$obj class="active active:this-is-active status crap" href="public_url"}`</th>
-	  <td>`'class="is-active this-is-active pending" href="http://example.com"'`</td>
-	</tr>
-</table>
+    
+*template file*
+    {attr target=$obj class="active active:this-is-active status crap" href="public_url"}
+    > 'class="is-active this-is-active pending" href="http://example.com"'
 
 ### Options
 
 There are a few options you can pass in to customize the output of the generated attributes string.
 
-<table>
-	<tr>
-	  <th>enclose</th>
-	  <td>The character to enclose the attr value.</td>
-	  <td>`"`</td>
-	  <td>`{attr target=$obj class="active" enclose="'"}`</td>
-	  <td>`class='is-active'`</td>
-	</tr>
-	
-	<tr>
-	  <th>newline</th>
-	  <td>If you pass in a boolean of true the attributes will be delimited by a newline character.</td>
-	  <td>`false`</td>
-	  <td>`{attr target=$obj class="active" href="public_url" newline=true}`</td>
-	  <td>`class="is-active"\nhref="http://example.com"`</td>
-	</tr>
-	
-	<tr>
-	  <th>sort</th>
-	  <td>Passing in true will sort the attr string alphabetically.</td>
-	  <td>`false`</td>
-	  <td>`{attr target=$obj href="public_url" class="active" sort=true}`</td>
-	  <td>`class="is-active" href="http://example.com"`</td>
-	</tr>
-</table>
+#### enclose
+
+*default: * "
+
+    {attr target=$obj class="active" enclose="'"}
+    > class='is-active'
+
+#### newline
+
+*default: * false
+
+    {attr target=$obj class="active" href="public_url" newline=true}
+    > class="is-active"\nhref="http://example.com"
+
+#### sort
+
+*default: * false
+
+    {attr target=$obj href="public_url" class="active" sort=true}
+    > class="is-active" href="http://example.com"
