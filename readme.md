@@ -33,21 +33,21 @@ There are a few options you can pass in to customize the output of the generated
 
 #### enclose
 
-*default: * "
+*default:* "
 
     {attr target=$obj class="active" enclose="'"}
     > class='is-active'
 
 #### newline
 
-*default: * false
+*default:* false
 
     {attr target=$obj class="active" href="public_url" newline=true}
     > class="is-active"\nhref="http://example.com"
 
 #### sort
 
-*default: * false
+*default:* false
 
     {attr target=$obj href="public_url" class="active" sort=true}
     > class="is-active" href="http://example.com"
